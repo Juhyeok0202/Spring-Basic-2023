@@ -23,8 +23,8 @@ public class OrderApp {
         Member memberB = new Member(2L, "memberB", Grade.BASIC);
         memberService.join(memberB);
 
-        Order orderA = orderService.createOrder(memberA.getId(), "itemA", 10000);
-        Order orderB = orderService.createOrder(memberB.getId(), "itemA", 10000);
+        Order orderA = orderService.createOrder(memberA.getId(), "itemA", 20000);
+        Order orderB = orderService.createOrder(memberB.getId(), "itemA", 20000);
 
         System.out.println(orderA+ "\n" + orderA.calculatePrice());
         System.out.println(orderB+ "\n" + orderB.calculatePrice());
