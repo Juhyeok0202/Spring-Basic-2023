@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class MemberServiceTest {
 
-    MemberService memberService = new MemberServuceImpl();
+    MemberService memberService = new MemberServiceImpl();
 
     @Test
     void join() {
@@ -18,6 +18,6 @@ public class MemberServiceTest {
 
         //then
         Assertions.assertThat(member).isEqualTo(findMember);
-        
+
     }
 }
