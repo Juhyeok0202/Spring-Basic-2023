@@ -13,6 +13,6 @@ public class MemberServuceImpl implements MemberService {
 
     @Override
     public Member findMember(Long memberId) {
-        return null;
+        return memberRepository.findById(memberId);
     }
 }
