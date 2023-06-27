@@ -6,9 +6,11 @@ import hello.core.member.MemberServiceImpl;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ApplicationContextBasicFindTest {
 
@@ -40,4 +42,16 @@ class ApplicationContextBasicFindTest {
         assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
     }
 
+
+//    테스트는 O케이스와 X케이스 모두 테스팅 해야한다.
+    @Test
+    @DisplayName("빈 이름으로 조회X")
+    void findBeanByNameX() {
+//        ac.getBean("xxxx", MemberService.class);
+
+//        오른쪽 식을 실행 했을 때, 왼쪽의 예외가 터지면 성공!(assertThrows)
+//        예외가 던져져야 한다는 의미
+        assertThrows(NoSuchBeanDefinitionException.class,
+                () -> ac.getBean("xxxx", MemberService.class));
+    }
 }
