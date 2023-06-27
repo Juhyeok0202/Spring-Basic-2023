@@ -6,6 +6,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class SingletonTest {
 
     @Test
@@ -27,6 +29,24 @@ public class SingletonTest {
         System.out.println("memberService2 = " + memberService2);
 
         //memberService1 != memberService2
-        Assertions.assertThat(memberService1).isNotSameAs(memberService2);
+        assertThat(memberService1).isNotSameAs(memberService2);
+    }
+
+    @Test
+    @DisplayName("싱글톤 패턴을 적용한 객체 사용")
+    void singletonServiceTest() {
+        //객체 생성 비용보다 참조로 가져오는 비용이 매우매우 적음
+//        SingletonService1 = hello.core.singleton.SingletonService@44a664f2
+//        SingletonService2 = hello.core.singleton.SingletonService@44a664f2
+
+        SingletonService SingletonService1 = SingletonService.getInstance();
+        SingletonService SingletonService2 = SingletonService.getInstance();
+
+        System.out.println("SingletonService1 = " + SingletonService1);
+        System.out.println("SingletonService2 = " + SingletonService2);
+
+        assertThat(SingletonService1).isSameAs(SingletonService2);
+        //same == (참조 인스턴스 비교)
+        //equal  (자바의 equals 메서드와 같음)
     }
 }
