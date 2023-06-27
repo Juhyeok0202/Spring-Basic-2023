@@ -44,6 +44,8 @@ public class ApplicationContextSameBeanFindTest {
         for (String key : beansOfType.keySet()) {
             System.out.println("key = " + key + "value = " + beansOfType.get(key));
         }
+        System.out.println("beansOfType = " + beansOfType);
+        assertThat(beansOfType.size()).isEqualTo(2);
     }
 
 //    중복 타입 빈 조회 예외 케이스 테스트 만들기 위한 새로운 Bean구성
