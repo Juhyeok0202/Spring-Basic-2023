@@ -11,6 +11,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Map;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ApplicationContextExtendsFindTest {
@@ -39,7 +41,12 @@ public class ApplicationContextExtendsFindTest {
         assertThat(bean).isInstanceOf(RateDiscountPolicy.class);
     }
 
-
+    @Test
+    @DisplayName("부모 타입으로 모두 조회하기")
+    void findAllByParentType() {
+        Map<String, DiscountPolicy> beansOfType = ac.getBeansOfType(DiscountPolicy.class);
+        assertThat(beansOfType.size()).isEqualTo(2);
+    }
     @Configuration
     static class TestConfig {
 
